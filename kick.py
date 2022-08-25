@@ -94,9 +94,16 @@ class KickDrum:
             if (p.get_device_info_by_host_api_device_index(0, i).get('maxInputChannels')) > 0:
                 print("Input Device id ", i, " - ", p.get_device_info_by_host_api_device_index(0, i).get('name'))
 
-while True:
-    data = stream.read(1024, exception_on_overflow=False)
-    x = rms(data)
-    if x > 0:
-        print(x)
-        player.play('bass.wav')
+    def start_controller(self):
+        """
+        Start the loop and listen for events
+        """
+
+        config = self._read_config()
+
+        while True:
+            data = stream.read(1024, exception_on_overflow=False)
+            x = rms(data)
+            if x > 0:
+                print(x)
+                player.play('bass.wav')
