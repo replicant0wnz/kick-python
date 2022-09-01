@@ -17,7 +17,7 @@ class KickDrum:
 
     """
 
-    def __init__(self, config_file="config.yaml"):
+    def __init__(self, config_file="config.yml"):
         """
         Keywords:
             config_file (str): Full path to config
@@ -112,7 +112,7 @@ class KickDrum:
                     ),
                 )
 
-    def start_controller(self, stream=None):
+    def start_controller(self):
         """
         Start the loop and listen for events
         """
@@ -133,3 +133,6 @@ class KickDrum:
             if x > config["threshold"]:
                 print(x)
                 player.play(config["sample"])
+
+x = KickDrum()
+x.start_controller()
